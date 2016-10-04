@@ -1,9 +1,16 @@
 @import 'lib/base';
 
+#timeline {
+  margin: 0 35% 0 auto;
+  padding: 2rem 0;
+
+  max-width: 860px;
+}
+
 .timeline-entry {
   position: relative;
 
-  width: 70%;
+  width: 100%;
   overflow: auto;
 
   .timestamp {
@@ -58,13 +65,20 @@
 
   .entry {
     display: inline-block;
+    position: relative;
     float: right;
     padding: 2rem;
 
-    width: calc(100% - 17rem);
+    width: calc(100% - 15rem);
 
     border-radius: 4px;
     background-color: $primaryColor;
+
+    h1 {
+      font-family: sans-serif;
+      font-weight: bold;
+      font-size: 1.8rem;
+    }
 
     hr {
       width: 100%;
@@ -72,6 +86,27 @@
 
       border: none;
       border-top: 1px solid white;
+    }
+
+    p {
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 1.4rem;
+    }
+
+    &:before {
+      content: "";
+
+      position: absolute;
+      top: 9px;
+      left: -7px;
+
+      width: 0;
+      height: 0;
+
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 10px solid $primaryColor;
     }
   }
 }
