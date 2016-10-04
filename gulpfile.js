@@ -9,7 +9,13 @@ gulp.task('sass', () => {
     './scss/lib/*.scss',
     './scss/app.scss'
   ])
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+      includePaths: [
+        './bower_components/normalize-css',
+        './bower_components/components-font-awesome/scss'
+      ],
+      outputStyle: 'expanded'
+    }).on('error', sass.logError))
     .pipe(gulp.dest('./styles'))
     .pipe(browserSync.reload({
       stream: true
