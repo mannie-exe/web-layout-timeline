@@ -1,5 +1,5 @@
 
-# Created by https://www.gitignore.io/api/macos,node,sass
+# Created by https://www.gitignore.io/api/macos,node,bower,sass
 
 ### macOS ###
 *.DS_Store
@@ -77,7 +77,13 @@ jspm_packages
 *.tgz
 
 
+### Bower ###
+bower_components
+.bower-cache
+.bower-registry
+.bower-tmp
+
+
 ### Sass ###
 .sass-cache/
 *.css.map
-
