@@ -1,2 +1,14 @@
 @import 'normalize';
 @import 'font-awesome';
+
+$primaryColor: hsl(203, 70%, 71%);
+$secondaryColor: hsl(204, 58%, 60%);
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
+  font-size: 62.5%;
+}
