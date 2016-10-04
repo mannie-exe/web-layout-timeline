@@ -3328,7 +3328,6 @@ html, body {
 
 .timeline-entry {
   position: relative;
-  padding-top: 1rem;
   width: 70%;
   overflow: auto;
 }
@@ -3352,7 +3351,7 @@ html, body {
 .timeline-entry .icon {
   display: inline-block;
   position: relative;
-  top: -1.8rem;
+  top: -1.5rem;
   width: 3.6rem;
   height: 3.6rem;
   border: 5px solid #b8dbf4;
@@ -3369,7 +3368,7 @@ html, body {
 
 .timeline-entry .divider-line {
   position: absolute;
-  top: 4.2rem;
+  top: 3.4rem;
   left: 10.8rem;
   width: 0;
   height: 100%;
