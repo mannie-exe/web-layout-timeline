@@ -1,1 +1,78 @@
 @import 'lib/base';
+
+.timeline-entry {
+  position: relative;
+  padding-top: 1rem;
+
+  width: 70%;
+  overflow: auto;
+
+  .timestamp {
+    display: inline-block;
+    margin-right: 1rem;
+
+    .date {
+      float: right;
+
+      font-size: 1rem;
+      color: $subtextColor;
+    }
+
+    .time {
+      font-size: 3.2rem;
+
+      color: $secondaryColor;
+    }
+  }
+
+  .icon {
+    display: inline-block;
+    position: relative;
+    top: -1.8rem;
+
+    width: 3.6rem;
+    height: 3.6rem;
+
+    border: 5px solid $tertiaryColor;
+    border-radius: 50%;
+    background-color: $secondaryColor;
+
+    .fa {
+      position: relative;
+      top: 0.1rem;
+      right: 0.1rem;
+
+      font-size: 2.3rem;
+    }
+  }
+
+  .divider-line {
+    position: absolute;
+    top: 4.2rem;
+    left: 10.8rem;
+
+    width: 0;
+    height: 100%;
+
+    border: 3.5px solid $tertiaryColor;
+  }
+
+  .entry {
+    display: inline-block;
+    float: right;
+    padding: 2rem;
+
+    width: calc(100% - 17rem);
+
+    border-radius: 4px;
+    background-color: $primaryColor;
+
+    hr {
+      width: 100%;
+      height: 0;
+
+      border: none;
+      border-top: 1px solid white;
+    }
+  }
+}
