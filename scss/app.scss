@@ -5,13 +5,14 @@
   padding: 2rem 0;
 
   max-width: 860px;
+  min-height: 100%;
 }
 
 .timeline-entry {
   position: relative;
 
   width: 100%;
-  overflow: auto;
+  min-height: 25rem;
 
   .timestamp {
     display: inline-block;
@@ -28,6 +29,10 @@
       font-size: 3.2rem;
 
       color: $secondaryColor;
+
+      &.active {
+        color: $primaryColor;
+      }
     }
   }
 
@@ -72,7 +77,15 @@
     width: calc(100% - 15rem);
 
     border-radius: 4px;
-    background-color: $primaryColor;
+    background-color: $secondaryColor;
+
+    &.active {
+      background-color: $primaryColor;
+
+      &:before {
+        border-right: 10px solid $primaryColor;
+      }
+    }
 
     h1 {
       font-family: sans-serif;
@@ -106,7 +119,7 @@
 
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
-      border-right: 10px solid $primaryColor;
+      border-right: 10px solid $secondaryColor;
     }
   }
 }

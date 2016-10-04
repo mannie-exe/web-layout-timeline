@@ -3330,12 +3330,13 @@ html, body {
   margin: 0 35% 0 auto;
   padding: 2rem 0;
   max-width: 860px;
+  min-height: 100%;
 }
 
 .timeline-entry {
   position: relative;
   width: 100%;
-  overflow: auto;
+  min-height: 25rem;
 }
 
 .timeline-entry .timestamp {
@@ -3351,7 +3352,11 @@ html, body {
 
 .timeline-entry .timestamp .time {
   font-size: 3.2rem;
-  color: #5298c7;
+  color: #4da8e0;
+}
+
+.timeline-entry .timestamp .time.active {
+  color: #81c1e9;
 }
 
 .timeline-entry .icon {
@@ -3360,9 +3365,9 @@ html, body {
   top: -1.5rem;
   width: 3.6rem;
   height: 3.6rem;
-  border: 5px solid #b8dbf4;
+  border: 5px solid #baddf3;
   border-radius: 50%;
-  background-color: #5298c7;
+  background-color: #4da8e0;
 }
 
 .timeline-entry .icon .fa {
@@ -3378,7 +3383,7 @@ html, body {
   left: 10.8rem;
   width: 0;
   height: 100%;
-  border: 3.5px solid #b8dbf4;
+  border: 3.5px solid #baddf3;
 }
 
 .timeline-entry .entry {
@@ -3388,7 +3393,15 @@ html, body {
   padding: 2rem;
   width: calc(100% - 15rem);
   border-radius: 4px;
+  background-color: #4da8e0;
+}
+
+.timeline-entry .entry.active {
   background-color: #81c1e9;
+}
+
+.timeline-entry .entry.active:before {
+  border-right: 10px solid #81c1e9;
 }
 
 .timeline-entry .entry h1 {
@@ -3419,5 +3432,5 @@ html, body {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #81c1e9;
+  border-right: 10px solid #4da8e0;
 }

@@ -2,8 +2,8 @@
 @import 'font-awesome';
 
 $primaryColor: hsl(203, 70%, 71%);
-$secondaryColor: hsl(204, 51%, 55%);
-$tertiaryColor: hsl(205, 73%, 84%);
+$secondaryColor: darken($primaryColor, 12);
+$tertiaryColor: lighten($primaryColor, 13);
 $subtextColor: hsl(213, 23%, 81%);
 
 @mixin absolutelyCenter($axis:'both') {
