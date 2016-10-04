@@ -3439,16 +3439,22 @@ html, body {
 }
 
 @media screen and (max-width: 600px) {
-  .timestamp {
-    display: none !important;
+  .timeline-entry .timestamp {
+    display: block;
+    margin-bottom: 1rem;
+    text-align: right;
   }
-  .icon {
-    left: 0 !important;
+  .timeline-entry .timestamp .time {
+    clear: right;
   }
-  .divider-line {
+  .timeline-entry .icon {
+    top: 5.7rem;
+    left: 0;
+  }
+  .timeline-entry .divider-line {
     display: none;
   }
-  .entry {
-    width: calc(100% - 5rem) !important;
+  .timeline-entry .entry {
+    width: calc(100% - 5rem);
   }
 }

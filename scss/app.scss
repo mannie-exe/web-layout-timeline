@@ -129,19 +129,29 @@
 }
 
 @media screen and (max-width: 600px) {
-  .timestamp {
-    display: none !important;
-  }
+  .timeline-entry {
+    .timestamp {
+      display: block;
+      margin-bottom: 1rem;
 
-  .icon {
-    left: 0 !important;
-  }
+      text-align: right;
 
-  .divider-line {
-    display: none;
-  }
+      .time {
+        clear: right;
+      }
+    }
 
-  .entry {
-    width: calc(100% - 5rem) !important;
+    .icon {
+      top: 5.7rem;
+      left: 0;
+    }
+
+    .divider-line {
+      display: none;
+    }
+
+    .entry {
+      width: calc(100% - 5rem);
+    }
   }
 }
