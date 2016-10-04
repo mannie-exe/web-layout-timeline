@@ -1,9 +1,10 @@
 @import 'lib/base';
 
 #timeline {
-  margin: 0 35% 0 auto;
-  padding: 2rem 0;
+  margin: 0 auto 0 auto;
+  padding: 5rem 0 0 0;
 
+  width: 95%;
   max-width: 860px;
   min-height: 100%;
 }
@@ -12,7 +13,7 @@
   position: relative;
 
   width: 100%;
-  min-height: 25rem;
+  overflow: hidden;
 
   .timestamp {
     display: inline-block;
@@ -38,8 +39,9 @@
 
   .icon {
     display: inline-block;
-    position: relative;
-    top: -1.5rem;
+    position: absolute;
+    top: 0;
+    left: 10rem;
 
     width: 3.6rem;
     height: 3.6rem;
@@ -60,7 +62,7 @@
   .divider-line {
     position: absolute;
     top: 3.4rem;
-    left: 10.8rem;
+    left: 11.5rem;
 
     width: 0;
     height: 100%;
@@ -78,6 +80,8 @@
 
     border-radius: 4px;
     background-color: $secondaryColor;
+
+    transform: translateY(-1rem);
 
     &.active {
       background-color: $primaryColor;
@@ -111,7 +115,7 @@
       content: "";
 
       position: absolute;
-      top: 9px;
+      top: 18px;
       left: -7px;
 
       width: 0;
@@ -121,5 +125,23 @@
       border-bottom: 10px solid transparent;
       border-right: 10px solid $secondaryColor;
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .timestamp {
+    display: none !important;
+  }
+
+  .icon {
+    left: 0 !important;
+  }
+
+  .divider-line {
+    display: none;
+  }
+
+  .entry {
+    width: calc(100% - 5rem) !important;
   }
 }
