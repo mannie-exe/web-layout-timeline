@@ -3326,9 +3326,15 @@ html, body {
   color: white;
 }
 
+#timeline {
+  margin: 0 35% 0 auto;
+  padding: 2rem 0;
+  max-width: 860px;
+}
+
 .timeline-entry {
   position: relative;
-  width: 70%;
+  width: 100%;
   overflow: auto;
 }
 
@@ -3377,11 +3383,18 @@ html, body {
 
 .timeline-entry .entry {
   display: inline-block;
+  position: relative;
   float: right;
   padding: 2rem;
-  width: calc(100% - 17rem);
+  width: calc(100% - 15rem);
   border-radius: 4px;
   background-color: #81c1e9;
+}
+
+.timeline-entry .entry h1 {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.8rem;
 }
 
 .timeline-entry .entry hr {
@@ -3389,4 +3402,22 @@ html, body {
   height: 0;
   border: none;
   border-top: 1px solid white;
+}
+
+.timeline-entry .entry p {
+  font-family: sans-serif;
+  font-weight: 300;
+  font-size: 1.4rem;
+}
+
+.timeline-entry .entry:before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: -7px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #81c1e9;
 }
