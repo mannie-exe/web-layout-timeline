@@ -3315,3 +3315,12 @@ template {
   overflow: visible;
   clip: auto;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
+  font-size: 62.5%;
+}
