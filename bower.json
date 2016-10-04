@@ -1,0 +1,18 @@
+{
+  "name": "timeline",
+  "description": "The Iron Yard - Frontend Development - Assignment #6",
+  "main": "index.html",
+  "authors": [
+    "Manpreet \"Mannie\" Singh"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Raevox/HTML-Layouts-Timeline",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

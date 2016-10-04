@@ -1,0 +1,19 @@
+{
+  "name": "timeline",
+  "version": "0.1.0",
+  "description": "The Iron Yard - Frontend Development - Assignment #6",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"No test command present\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raevox/HTML-Layouts-Timeline.git"
+  },
+  "author": "Manpreet \"Mannie\" Singh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Raevox/HTML-Layouts-Timeline/issues"
+  },
+  "homepage": "https://github.com/Raevox/HTML-Layouts-Timeline#readme"
+}
