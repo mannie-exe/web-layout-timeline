@@ -2,7 +2,25 @@
 @import 'font-awesome';
 
 $primaryColor: hsl(203, 70%, 71%);
-$secondaryColor: hsl(204, 58%, 60%);
+$secondaryColor: hsl(204, 51%, 55%);
+$tertiaryColor: hsl(205, 73%, 84%);
+$subtextColor: hsl(213, 23%, 81%);
+
+@mixin absolutelyCenter($axis:'both') {
+  position: absolute;
+
+  @if $axis == 'vertical' {
+    top: 50%;
+    transform: translateY(-50%);
+  } @else if $axis == 'horizontal' {
+    left: 50%;
+    transform: translateX(-50%);
+  } @else {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
 
 * {
   box-sizing: border-box;
@@ -11,4 +29,6 @@ $secondaryColor: hsl(204, 58%, 60%);
 html, body {
   min-height: 100%;
   font-size: 62.5%;
+
+  color: white;
 }
