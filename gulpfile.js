@@ -16,7 +16,7 @@ gulp.task('sass', () => {
       ],
       outputStyle: 'expanded'
     }).on('error', sass.logError))
-    .pipe(gulp.dest('./styles'))
+    .pipe(gulp.dest('./public/styles'))
     .pipe(browserSync.reload({
       stream: true
     }));
