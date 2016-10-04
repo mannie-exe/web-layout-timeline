@@ -37,3 +37,5 @@ gulp.task('watch', [ 'browserSync', 'sass' ], () => {
     './public/index..html'
   ], [ 'sass' ]);
 });
+
+gulp.task('default', [ 'watch' ]);
