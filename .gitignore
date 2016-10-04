@@ -87,7 +87,3 @@ bower_components
 ### Sass ###
 .sass-cache/
 *.css.map
-
-### Custom ###
-public/fonts
-
