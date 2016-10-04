@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Raevox/HTML-Layouts-Timeline/issues"
   },
-  "homepage": "https://github.com/Raevox/HTML-Layouts-Timeline#readme"
+  "homepage": "https://github.com/Raevox/HTML-Layouts-Timeline#readme",
+  "devDependencies": {
+    "browser-sync": "^2.17.0",
+    "gulp-sass": "^2.3.2"
+  }
 }
