@@ -2,18 +2,29 @@
   "name": "web-layout-timeline",
   "version": "2.0.0",
   "description": "A website showcasing a mobile-responsive timeline view",
+  "author": "Manpreet \"Mannie\" Singh",
+  "license": "MIT",
+  "homepage": "https://mannie-exe.github.io/web-layout-timeline",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mannie-exe/web-layout-timeline.git"
   },
-  "author": "Manpreet \"Mannie\" Singh",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mannie-exe/web-layout-timeline/issues"
   },
-  "homepage": "https://mannie-exe.github.io/web-layout-timeline",
-  "devDependencies": {
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@iconify-json/tabler": "^1.1.92",
+    "glob": "^10.3.9",
+    "heroicons": "^2.0.18",
+    "modern-normalize": "^2.0.0",
+    "postcss": "^8.4.30",
+    "unplugin-icons": "^0.17.0",
+    "vite": "^4.4.9"
   }
 }
