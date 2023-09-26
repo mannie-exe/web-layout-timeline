@@ -1,26 +1,19 @@
 {
-  "name": "timeline",
-  "version": "0.1.0",
-  "description": "The Iron Yard - Frontend Development - Assignment #6",
-  "main": "index.html",
-  "scripts": {
-    "test": "echo \"No test command present\""
-  },
+  "name": "web-layout-timeline",
+  "version": "2.0.0",
+  "description": "A website showcasing a mobile-responsive timeline view",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Raevox/HTML-Layouts-Timeline.git"
+    "url": "git+https://github.com/mannie-exe/web-layout-timeline.git"
   },
   "author": "Manpreet \"Mannie\" Singh",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Raevox/HTML-Layouts-Timeline/issues"
+    "url": "https://github.com/mannie-exe/web-layout-timeline/issues"
   },
-  "homepage": "https://github.com/Raevox/HTML-Layouts-Timeline#readme",
+  "homepage": "https://mannie-exe.github.io/web-layout-timeline",
   "devDependencies": {
-    "browser-sync": "^2.17.0",
-    "gulp-sass": "^2.3.2"
   },
   "dependencies": {
-    "gulp": "^3.9.1"
   }
 }
