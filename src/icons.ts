@@ -1,2 +1,3 @@
-import "~icons/tabler/message-circle-2-filled"
+import "~icons/tabler/device-desktop"
+import "~icons/tabler/device-mobile"
 
