@@ -20,10 +20,13 @@
   },
   "devDependencies": {
     "@iconify-json/tabler": "^1.1.92",
+    "autoprefixer": "^10.4.16",
     "glob": "^10.3.9",
     "heroicons": "^2.0.18",
     "modern-normalize": "^2.0.0",
     "postcss": "^8.4.30",
+    "postcss-nested": "^6.0.1",
+    "sass": "^1.68.0",
     "unplugin-icons": "^0.17.0",
     "vite": "^4.4.9"
   }

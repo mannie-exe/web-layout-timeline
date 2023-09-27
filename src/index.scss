@@ -1,0 +1,68 @@
+/**
+ * Modern CSS reset
+ * https://github.com/sindresorhus/modern-normalize
+ */
+@import url("modern-normalize");
+
+html {
+  // Initialize typography
+  font-size: 62.5%;
+  color: rgb(0.99%, 0.1%, 1.25%);
+
+  body {
+    font-size: 1.6em;
+
+    // Center align site title
+    h1 {
+      text-align: center;
+    }
+
+
+    // Responsive width for site container
+    main {
+      width: 94%;
+      margin: 0 auto;
+    }
+
+    @media screen and (min-width: 480px) {
+      main {
+        width: 80%;
+      }
+    }
+
+    @media screen and (min-width: 960px) {
+      main {
+        width: 40%;
+      }
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Adaptive theme
+ */
+
+/* @media screen and (prefers-color-scheme: light) { */
+/*   html { */
+/*   } */
+/* } */
+/**/
+/* @media screen and (prefers-color-scheme: dark) { */
+/*   html { */
+/*     color: rgb(99.5%, 92.5%, 87.7%); */
+/*     background-color: rgb(0.99%, 0.1%, 1.25%); */
+/*   } */
+/* } */
