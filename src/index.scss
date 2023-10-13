@@ -10,6 +10,9 @@ html {
   color: rgb(0.99%, 0.1%, 1.25%);
 
   body {
+    // Max content (main) size
+    --main-max-width: 60rem;
+
     // Set global style color values
     --text-color: rgba(255, 255, 255, 0.87);
     --subtext-color: rgb(195, 205, 218);
@@ -23,24 +26,35 @@ html {
 
     // Center align site title
     h1 {
+      font-size: 4.2rem;
       text-align: center;
     }
 
-    // Responsive width for site container
+    // Global responsive styling; content sizing and header spacing
     main {
       width: 94%;
       margin: 0 auto;
     }
 
-    @media screen and (min-width: 800px) {
+    @media screen and (min-width: 600px) {
       main {
         width: 80%;
       }
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 800px) {
       main {
-        width: 40%;
+        width: 60%;
+      }
+    }
+
+    @media screen and (min-width: 1100px) {
+      h1 {
+        margin-bottom: 8rem;
+      }
+
+      main {
+        width: var(--main-max-width);
       }
     }
 
@@ -56,14 +70,23 @@ html {
       }
 
       // notif. message icon sizing
-      --notif-icon-size: 3.8rem;
+      --notif-icon-size: 3.8rem; // icon size (including container)
+      --notif-icon-spacing: 1.8rem; // general offset from content
+      --notif-icon-padding: 1.2rem; // extra padding in mobile-view
       --notif-icon-text-size: calc(var(--notif-icon-size) - 1.9rem);
 
       // notif. message grid configuration
       display: grid;
       grid-template-rows: auto auto;
-      grid-template-columns: calc(var(--notif-icon-size) + 1.8rem) auto;
+      grid-template-columns: calc(var(--notif-icon-size) + var(--notif-icon-spacing)) auto;
       row-gap: 0.2rem;
+
+      @media screen and (min-width: 1100px) {
+        & {
+          grid-template-rows: initial;
+          grid-template-columns: 3fr calc(var(--notif-icon-size) + var(--notif-icon-spacing) + var(--notif-icon-padding)) 10fr;
+        }
+      }
 
       // notif. message margin spacing
       margin-bottom: 2.8rem;
@@ -73,9 +96,15 @@ html {
         text-align: right;
         grid-column-start: 2;
 
+        @media screen and (min-width: 1100px) {
+          & {
+            grid-column-start: 1;
+          }
+        }
+
         // notif. message date styling
         .notif-message-date {
-          font-size: 1.8rem;
+          font-size: 1.6rem;
           color: var(--subtext-color);
 
           padding-right: 0.2rem;
@@ -85,8 +114,7 @@ html {
         .notif-message-time {
           font-size: 3.4rem;
           font-weight: bold;
-          color: var(--active-color);
-          opacity: 0.5;
+          color: var(--accent-color);
         }
       }
 
@@ -94,6 +122,15 @@ html {
       .notif-message-icon {
         // notif. message icon alignment
         margin-top: 2.1rem;
+
+        @media screen and (min-width: 1100px) {
+          & {
+            margin-left: var(--notif-icon-padding);
+          }
+        }
+
+        // notif. message icon color
+        color: var(--accent-color);
 
         // notif. message icon sizing
         font-size: var(--notif-icon-text-size);
@@ -130,11 +167,17 @@ html {
         margin-bottom: 2.4rem;
         padding-bottom: 1.2rem;
 
-        // Set notif. message title text size
+        // Set notif. message title text style
         font-size: 2.2rem;
+        color: var(--accent-color);
 
         /// Add notif. message title border (horizontal rule)
-        border-bottom: 1px solid var(--text-color);
+        border-bottom: 1px solid var(--accent-color);
+      }
+
+      // notif. message text body styling
+      .notif-message-body {
+        font-size: 1.6rem;
       }
     }
   }
