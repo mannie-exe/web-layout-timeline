@@ -36,7 +36,7 @@ Run the Vite development server using:
 ```
 npm run dev
 ```
-and the development web page can be viewed (by default) at [127.0.0.1:8080/web-layout-timeline](127.0.0.1:8080/web-layout-timeline).
+and the development web page can be viewed (by default) at [http://127.0.0.1:8080/web-layout-timeline](http://127.0.0.1:8080/web-layout-timeline).
 
 ### Technologies
 * Vite

@@ -22,7 +22,6 @@
     "@iconify-json/tabler": "^1.1.92",
     "autoprefixer": "^10.4.16",
     "glob": "^10.3.9",
-    "heroicons": "^2.0.18",
     "modern-normalize": "^2.0.0",
     "postcss": "^8.4.30",
     "sass": "^1.68.0",
