@@ -71,9 +71,14 @@ html {
 
       // notif. message icon sizing
       --notif-icon-size: 3.8rem; // icon size (including container)
-      --notif-icon-spacing: 1.8rem; // general offset from content
-      --notif-icon-padding: 1.2rem; // extra padding in mobile-view
-      --notif-icon-text-size: calc(var(--notif-icon-size) - 1.9rem);
+      --notif-icon-offset: 2.1rem; // icon vertical offset
+      --notif-icon-spacing: 1.8rem; // icon horizontal offset from content
+      --notif-icon-padding: 1.2rem; // icon horiz. padding from time on desktop
+      --notif-icon-text-size: calc(var(--notif-icon-size) - 2rem);
+
+
+      // notif. message position relative for visual-aid time line
+      position: relative;
 
       // notif. message grid configuration
       display: grid;
@@ -81,7 +86,38 @@ html {
       grid-template-columns: calc(var(--notif-icon-size) + var(--notif-icon-spacing)) auto;
       row-gap: 0.2rem;
 
+      // Draw timeline visual-aid line
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+
+        // Push line behind icon
+        z-index: -1;
+
+        width: 0.6rem;
+        height: 100%;
+
+        background-color: var(--accent-color);
+
+        top: 11rem;
+        left: 1.6rem;
+      }
+
+      // Clear visual-aid time line from last element
+      &:last-child::after {
+        display: none;
+      }
+
       @media screen and (min-width: 1100px) {
+
+        // Adjust visual-aid time line
+        &::after {
+          top: 5rem;
+          left: 15.06rem;
+        }
+
+        // Switch to desktop view
         & {
           grid-template-rows: initial;
           grid-template-columns: 3fr calc(var(--notif-icon-size) + var(--notif-icon-spacing) + var(--notif-icon-padding)) 10fr;
@@ -121,7 +157,7 @@ html {
       // notif. message icon styling
       .notif-message-icon {
         // notif. message icon alignment
-        margin-top: 2.1rem;
+        margin-top: var(--notif-icon-offset);
 
         @media screen and (min-width: 1100px) {
           & {
