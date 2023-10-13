@@ -30,14 +30,6 @@ html {
     // Set page background
     background: rgb(249, 254, 255);
 
-    // Style site title
-    h1 {
-      text-align: center;
-      margin-top: 0;
-
-      font-size: 4.2rem;
-    }
-
     // Global responsive styling; content sizing and header spacing
     main {
       width: 94%;
@@ -57,10 +49,6 @@ html {
     }
 
     @media screen and (min-width: 1100px) {
-      h1 {
-        margin-bottom: 8rem;
-      }
-
       main {
         width: var(--main-max-width);
       }
