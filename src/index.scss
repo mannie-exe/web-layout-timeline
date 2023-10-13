@@ -24,12 +24,18 @@ html {
     font-size: 1.6em;
     color: var(--text-color);
 
+    // Set page top padding
+    padding-top: 4.2rem;
+
+    // Set page background
     background: rgb(249, 254, 255);
 
-    // Center align site title
+    // Style site title
     h1 {
-      font-size: 4.2rem;
       text-align: center;
+      margin-top: 0;
+
+      font-size: 4.2rem;
     }
 
     // Global responsive styling; content sizing and header spacing
@@ -239,19 +245,3 @@ html {
     }
   }
 }
-
-/**
- * Adaptive theme
- */
-
-/* @media screen and (prefers-color-scheme: light) { */
-/*   html { */
-/*   } */
-/* } */
-/**/
-/* @media screen and (prefers-color-scheme: dark) { */
-/*   html { */
-/*     color: rgb(99.5%, 92.5%, 87.7%); */
-/*     background-color: rgb(0.99%, 0.1%, 1.25%); */
-/*   } */
-/* } */
