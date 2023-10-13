@@ -1,0 +1,251 @@
+/**
+ * Modern CSS reset
+ * https://github.com/sindresorhus/modern-normalize
+ */
+@import url("modern-normalize");
+
+html {
+  // Initialize typography
+  font-size: 62.5%;
+  color: rgb(0.99%, 0.1%, 1.25%);
+
+  body {
+    // Max content (main) size
+    --main-max-width: 60rem;
+
+    // Set global style color values
+    --text-color: rgba(255, 255, 255, 0.87);
+    --subtext-color: rgb(195, 205, 218);
+    --base-color: rgb(77, 168, 224);
+    --accent-color: rgb(186, 221, 243);
+    --highlight-color: rgb(129, 193, 233);
+
+    // Set base font
+    font-size: 1.6em;
+    color: var(--text-color);
+
+    // Set page top padding
+    padding-top: 4.2rem;
+
+    // Set page background
+    background: rgb(249, 254, 255);
+
+    // Global responsive styling; content sizing and header spacing
+    main {
+      width: 94%;
+      margin: 0 auto;
+    }
+
+    @media screen and (min-width: 600px) {
+      main {
+        width: 80%;
+      }
+    }
+
+    @media screen and (min-width: 800px) {
+      main {
+        width: 60%;
+      }
+    }
+
+    @media screen and (min-width: 1100px) {
+      main {
+        width: var(--main-max-width);
+      }
+    }
+
+    // main.notif-messagse-list {}
+
+    // Notification Message Item (notif. message) styling
+    main.notif-message-list section.notif-message-item {
+      --active-color: var(--base-color);
+
+      &.active,
+      &:hover {
+        --active-color: var(--highlight-color);
+
+        aside.notif-message-timestamp .notif-message-time {
+          color: var(--base-color);
+        }
+
+        h5.notif-message-title {
+          color: var(--text-color);
+        }
+      }
+
+      // Set message icon sizing
+      --notif-icon-size: 3.8rem; // icon size (including container)
+      --notif-icon-offset: 2.1rem; // icon vertical offset
+      --notif-icon-spacing: 1.8rem; // icon horizontal offset from content
+      --notif-icon-padding: 1.2rem; // icon horiz. padding from time on desktop
+      --notif-icon-text-size: calc(var(--notif-icon-size) - 2rem);
+
+      // Set position relative for visual-aid time line
+      position: relative;
+
+      // Grid configuration
+      display: grid;
+      grid-template-rows: auto auto;
+      grid-template-columns: calc(var(--notif-icon-size) + var(--notif-icon-spacing)) auto;
+      row-gap: 0.2rem;
+
+      // Margin spacing
+      margin-bottom: 2.8rem;
+
+      // Enable transitions
+
+      // Draw timeline visual-aid line
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+
+        // Push line behind icon
+        z-index: -1;
+
+        width: 0.6rem;
+        height: 100%;
+
+        transition: background-color 0.1s ease-out;
+        background-color: var(--accent-color);
+
+        top: 11rem;
+        left: 1.6rem;
+      }
+
+      // Clear visual-aid time line from last element
+      &:last-child::after {
+        display: none;
+      }
+
+      @media screen and (min-width: 1100px) {
+
+        // Adjust visual-aid time line
+        &::after {
+          top: 5rem;
+          left: 15.06rem;
+        }
+
+        // Switch to desktop view
+        & {
+          grid-template-rows: initial;
+          grid-template-columns: 3fr calc(var(--notif-icon-size) + var(--notif-icon-spacing) + var(--notif-icon-padding)) 10fr;
+        }
+      }
+
+      // Timestamp styling
+      aside.notif-message-timestamp {
+        text-align: right;
+        grid-column-start: 2;
+
+        @media screen and (min-width: 1100px) {
+          & {
+            grid-column-start: 1;
+          }
+        }
+
+        // Date styling
+        .notif-message-date {
+          font-size: 1.6rem;
+          color: var(--subtext-color);
+
+          padding-right: 0.2rem;
+        }
+
+        // Time styling
+        .notif-message-time {
+          font-size: 3.4rem;
+          font-weight: bold;
+          transition: color 0.1s ease-out;
+          color: var(--accent-color);
+        }
+      }
+
+      // Message icon styling
+      .notif-message-icon {
+        // Icon alignment
+        margin-top: var(--notif-icon-offset);
+
+        @media screen and (min-width: 1100px) {
+          & {
+            margin-left: var(--notif-icon-padding);
+          }
+        }
+
+        // Icon color
+        color: var(--text-color);
+
+        // Icon sizing
+        font-size: var(--notif-icon-text-size);
+
+        // Icon container
+        transition: background-color 0.1s ease-out;
+        background-color: var(--active-color);
+        border: 5px solid var(--accent-color);
+        border-radius: 50%;
+
+        // Icon alignment
+        display: grid;
+        width: var(--notif-icon-size);
+        height: var(--notif-icon-size);
+
+        svg {
+          justify-self: center;
+          align-self: center;
+        }
+      }
+    }
+
+    // Content styling
+    article.notif-message-content {
+      // Content container
+      padding-left: 1.8rem;
+      padding-right: 1.8rem;
+      transition: background-color 0.1s ease-out;
+      background-color: var(--active-color);
+      border-radius: 0.5rem;
+      position: relative;
+
+      // Content chevron (speech bubble)
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+
+        left: -0.8rem;
+        top: 3rem;
+
+        width: 0;
+        height: 0;
+
+        border-top: 1rem solid transparent;
+        border-bottom: 1rem solid transparent;
+        transition: border-right 0.1s ease-out;
+        border-right: 1rem solid var(--active-color);
+      }
+
+
+      // Title styling
+      h5.notif-message-title {
+        // Align title text
+        margin-top: 2.4rem;
+        margin-bottom: 2.4rem;
+        padding-bottom: 1.2rem;
+
+        // Set title text style
+        font-size: 2.2rem;
+        font-weight: 720;
+        transition: color 0.1s ease-out;
+        color: var(--accent-color);
+
+        /// Add title border (horizontal rule)
+        border-bottom: 1px solid var(--accent-color);
+      }
+
+      // Text body styling
+      .notif-message-body {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
