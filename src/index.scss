@@ -64,31 +64,32 @@ html {
 
     // Notification Message Item (notif. message) styling
     main.notif-message-list section.notif-message-item {
-      // notif. message active color
       --active-color: var(--base-color);
 
       &.active {
         --active-color: var(--highlight-color);
       }
 
-      // notif. message icon sizing
+      // Set message icon sizing
       --notif-icon-size: 3.8rem; // icon size (including container)
       --notif-icon-offset: 2.1rem; // icon vertical offset
       --notif-icon-spacing: 1.8rem; // icon horizontal offset from content
       --notif-icon-padding: 1.2rem; // icon horiz. padding from time on desktop
       --notif-icon-text-size: calc(var(--notif-icon-size) - 2rem);
 
-      // notif. message position relative for visual-aid time line
+      // Set position relative for visual-aid time line
       position: relative;
 
-      // notif. message grid configuration
+      // Grid configuration
       display: grid;
       grid-template-rows: auto auto;
       grid-template-columns: calc(var(--notif-icon-size) + var(--notif-icon-spacing)) auto;
       row-gap: 0.2rem;
 
-      // notif. message margin spacing
+      // Margin spacing
       margin-bottom: 2.8rem;
+
+      // Enable transitions
 
       // Draw timeline visual-aid line
       &::after {
@@ -128,7 +129,7 @@ html {
         }
       }
 
-      // notif. message timestamp styling
+      // Timestamp styling
       aside.notif-message-timestamp {
         text-align: right;
         grid-column-start: 2;
@@ -139,7 +140,7 @@ html {
           }
         }
 
-        // notif. message date styling
+        // Date styling
         .notif-message-date {
           font-size: 1.6rem;
           color: var(--subtext-color);
@@ -147,7 +148,7 @@ html {
           padding-right: 0.2rem;
         }
 
-        // notif. message time styling
+        // Time styling
         .notif-message-time {
           font-size: 3.4rem;
           font-weight: bold;
@@ -155,9 +156,9 @@ html {
         }
       }
 
-      // notif. message icon styling
+      // Message icon styling
       .notif-message-icon {
-        // notif. message icon alignment
+        // Icon alignment
         margin-top: var(--notif-icon-offset);
 
         @media screen and (min-width: 1100px) {
@@ -166,18 +167,18 @@ html {
           }
         }
 
-        // notif. message icon color
+        // Icon color
         color: var(--text-color);
 
-        // notif. message icon sizing
+        // Icon sizing
         font-size: var(--notif-icon-text-size);
 
-        // notif. message icon container
+        // Icon container
         background-color: var(--active-color);
         border: 5px solid var(--accent-color);
         border-radius: 50%;
 
-        // notif. message icon alignment
+        // Icon alignment
         display: grid;
         width: var(--notif-icon-size);
         height: var(--notif-icon-size);
@@ -189,16 +190,16 @@ html {
       }
     }
 
-    // notif. message content styling
+    // Content styling
     article.notif-message-content {
-      // notif. message content container
+      // Content container
       padding-left: 1.8rem;
       padding-right: 1.8rem;
       background-color: var(--active-color);
       border-radius: 0.5rem;
       position: relative;
 
-      // notif. message content chevron (speech bubble)
+      // Content chevron (speech bubble)
       &::before {
         content: "";
         position: absolute;
@@ -215,23 +216,23 @@ html {
         border-right: 1rem solid var(--active-color);
       }
 
-      // notif. message title styling
+      // Title styling
       h5.notif-message-title {
-        // Align notif. message title text
+        // Align title text
         margin-top: 2.4rem;
         margin-bottom: 2.4rem;
         padding-bottom: 1.2rem;
 
-        // Set notif. message title text style
+        // Set title text style
         font-size: 2.2rem;
         font-weight: 720;
         color: var(--accent-color);
 
-        /// Add notif. message title border (horizontal rule)
+        /// Add title border (horizontal rule)
         border-bottom: 1px solid var(--accent-color);
       }
 
-      // notif. message text body styling
+      // Text body styling
       .notif-message-body {
         font-size: 1.6rem;
       }
