@@ -41,7 +41,7 @@ const input = (await glob(`${dir.input}/**/*.html`)).reduce(
 export default define_config({
   root: resolve_path(process.cwd(), dir.input),
   publicDir: dir.static,
-  base: "/web-layout-timeine",
+  base: "/web-layout-timeline",
   build: {
     outDir: dir.output,
     emptyOutDir: true,
