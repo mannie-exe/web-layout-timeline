@@ -17,9 +17,32 @@ After completing this assignment, you should be able to create a responsive layo
 ---
 
 ### Setup
+Make sure to run:
 ```
+npm install
 ```
+before trying to build or develop this project.
 
 ### Build
+#### Production
+Create a production build using:
 ```
+npm run build
 ```
+...once finished building, open `./dist/index.html` from source root to view website. Alternatively, visit the GitHub Pages URL for this project at: [https://mannie-exe.github.io/web-layout-timeline](https://mannie-exe.github.io/web-layout-timeline).
+
+#### Development
+Run the Vite development server using:
+```
+npm run dev
+```
+and the development web page can be viewed (by default) at [127.0.0.1:8080/web-layout-timeline](127.0.0.1:8080/web-layout-timeline).
+
+### Technologies
+* Vite
+* PostCSS
+* Iconify
+* Unplugin Icons
+* Sass/SCSS
+
+...and a little more.
