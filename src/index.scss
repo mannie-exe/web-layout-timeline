@@ -72,8 +72,17 @@ html {
     main.notif-message-list section.notif-message-item {
       --active-color: var(--base-color);
 
-      &.active {
+      &.active,
+      &:hover {
         --active-color: var(--highlight-color);
+
+        aside.notif-message-timestamp .notif-message-time {
+          color: var(--base-color);
+        }
+
+        h5.notif-message-title {
+          color: var(--text-color);
+        }
       }
 
       // Set message icon sizing
@@ -109,6 +118,7 @@ html {
         width: 0.6rem;
         height: 100%;
 
+        transition: background-color 0.1s ease-out;
         background-color: var(--accent-color);
 
         top: 11rem;
@@ -158,6 +168,7 @@ html {
         .notif-message-time {
           font-size: 3.4rem;
           font-weight: bold;
+          transition: color 0.1s ease-out;
           color: var(--accent-color);
         }
       }
@@ -180,6 +191,7 @@ html {
         font-size: var(--notif-icon-text-size);
 
         // Icon container
+        transition: background-color 0.1s ease-out;
         background-color: var(--active-color);
         border: 5px solid var(--accent-color);
         border-radius: 50%;
@@ -201,6 +213,7 @@ html {
       // Content container
       padding-left: 1.8rem;
       padding-right: 1.8rem;
+      transition: background-color 0.1s ease-out;
       background-color: var(--active-color);
       border-radius: 0.5rem;
       position: relative;
@@ -219,8 +232,10 @@ html {
 
         border-top: 1rem solid transparent;
         border-bottom: 1rem solid transparent;
+        transition: border-right 0.1s ease-out;
         border-right: 1rem solid var(--active-color);
       }
+
 
       // Title styling
       h5.notif-message-title {
@@ -232,6 +247,7 @@ html {
         // Set title text style
         font-size: 2.2rem;
         font-weight: 720;
+        transition: color 0.1s ease-out;
         color: var(--accent-color);
 
         /// Add title border (horizontal rule)
