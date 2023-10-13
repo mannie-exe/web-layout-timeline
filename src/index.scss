@@ -192,10 +192,28 @@ html {
     // notif. message content styling
     article.notif-message-content {
       // notif. message content container
-      background-color: var(--active-color);
-      border-radius: 0.5rem;
       padding-left: 1.8rem;
       padding-right: 1.8rem;
+      background-color: var(--active-color);
+      border-radius: 0.5rem;
+      position: relative;
+
+      // notif. message content chevron (speech bubble)
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+
+        left: -0.8rem;
+        top: 3rem;
+
+        width: 0;
+        height: 0;
+
+        border-top: 1rem solid transparent;
+        border-bottom: 1rem solid transparent;
+        border-right: 1rem solid var(--active-color);
+      }
 
       // notif. message title styling
       h5.notif-message-title {
