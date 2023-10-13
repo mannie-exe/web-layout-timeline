@@ -24,6 +24,8 @@ html {
     font-size: 1.6em;
     color: var(--text-color);
 
+    background: rgb(249, 254, 255);
+
     // Center align site title
     h1 {
       font-size: 4.2rem;
@@ -76,7 +78,6 @@ html {
       --notif-icon-padding: 1.2rem; // icon horiz. padding from time on desktop
       --notif-icon-text-size: calc(var(--notif-icon-size) - 2rem);
 
-
       // notif. message position relative for visual-aid time line
       position: relative;
 
@@ -85,6 +86,9 @@ html {
       grid-template-rows: auto auto;
       grid-template-columns: calc(var(--notif-icon-size) + var(--notif-icon-spacing)) auto;
       row-gap: 0.2rem;
+
+      // notif. message margin spacing
+      margin-bottom: 2.8rem;
 
       // Draw timeline visual-aid line
       &::after {
@@ -123,9 +127,6 @@ html {
           grid-template-columns: 3fr calc(var(--notif-icon-size) + var(--notif-icon-spacing) + var(--notif-icon-padding)) 10fr;
         }
       }
-
-      // notif. message margin spacing
-      margin-bottom: 2.8rem;
 
       // notif. message timestamp styling
       aside.notif-message-timestamp {
@@ -166,7 +167,7 @@ html {
         }
 
         // notif. message icon color
-        color: var(--accent-color);
+        color: var(--text-color);
 
         // notif. message icon sizing
         font-size: var(--notif-icon-text-size);
@@ -205,6 +206,7 @@ html {
 
         // Set notif. message title text style
         font-size: 2.2rem;
+        font-weight: 720;
         color: var(--accent-color);
 
         /// Add notif. message title border (horizontal rule)
