@@ -1,3 +1,3 @@
 import "./icons.ts"
 
-console.log("hello, world!")
+import "./scroll_feedback.ts"

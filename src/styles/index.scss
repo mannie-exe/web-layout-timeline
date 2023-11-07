@@ -5,256 +5,268 @@
 @import url("modern-normalize");
 
 html {
+  // Set global style color values
+  --doc-text-color: rgba(255, 255, 255, 0.87);
+  --doc-subtext-color: rgb(195, 205, 218);
+  --doc-base-color: rgb(77, 168, 224);
+  --doc-accent-color: rgb(186, 221, 243);
+  --doc-highlight-color: rgb(129, 193, 233);
+
   // Initialize typography
   font-size: 62.5%;
-  color: rgb(0.99%, 0.1%, 1.25%);
 
   body {
-    // Set global style color values
-    --text-color: rgba(255, 255, 255, 0.87);
-    --subtext-color: rgb(195, 205, 218);
-    --base-color: rgb(77, 168, 224);
-    --accent-color: rgb(186, 221, 243);
-    --highlight-color: rgb(129, 193, 233);
-
     // Set base font
     font-size: 1.6em;
-    color: var(--text-color);
+    color: var(--doc-text-color);
 
     // Set page top padding
     padding-top: 4.2rem;
 
     // Set page background
     background: rgb(249, 254, 255);
+  }
+}
 
-    main.notif-message-list {
-      // Max content (main) size
-      --main-max-width: 60rem;
-      --notif-item-width: 94%;
+// Notification Message Item (notif. message) styling
+main.notif-message-list {
 
-      width: var(--notif-item-width);
-      margin: 0 auto;
+  // Default content size
+  --nml-width: 94%;
 
-      // Set adaptive (responsive) content width/size
-      @media screen and (min-width: 600px) {
-        & {
-          --notif-item-width: 80%;
-        }
+  // Set adaptive (responsive) content width/size
+  @media screen and (min-width: 600px) {
+    & {
+      --nml-width: 80%;
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+    & {
+      --nml-width: 60%;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    & {
+      --nml-width: 60rem;
+    }
+  }
+
+  width: var(--nml-width);
+  margin: 0 auto;
+
+  section.notif-message-item {
+    // Set current/active interaction color
+    --nmi-active-color: var(--doc-base-color);
+
+    // Give timestamp a stable width
+    --nmi-time-min-width: 9rem;
+
+    // Set message icon sizing
+    --nmi-icon-size: 3.8rem; // icon size (including container)
+    --nmi-icon-offset: 2.1rem; // icon vertical offset
+    --nmi-icon-spacing: 1.8rem; // icon horizontal offset from content
+    --nmi-icon-padding: 1.2rem; // icon horiz. padding from time on desktop
+    --nmi-icon-container-size: calc(var(--nmi-icon-size) + var(--nmi-icon-spacing));
+    --nmi-icon-text-size: calc(var(--nmi-icon-size) - 2rem);
+    --nmi-icon-border-size: 0.5rem;
+
+    // Set position relative for visual-aid time line
+    position: relative;
+
+    // Grid configuration
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: calc(var(--nmi-icon-size) + var(--nmi-icon-spacing)) auto;
+    row-gap: 0.2rem;
+
+    // Margin spacing
+    margin-bottom: 2.8rem;
+
+    // Draw timeline visual-aid line
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+
+      // Push line behind icon
+      z-index: -1;
+
+      width: 0.6rem;
+      height: calc(100% + var(--nmi-icon-size) - 1rem);
+
+      // Enable transitions
+      transition: background-color 0.1s ease-out;
+      background-color: var(--doc-accent-color);
+
+      top: calc(11.8rem);
+      left: calc(var(--nmi-icon-size) / 2.0 - var(--nmi-icon-border-size) / 2.0);
+    }
+
+    // Clear visual-aid time line from last element
+    &:last-child::after {
+      display: none;
+    }
+
+    // Assign active state
+    &.active {
+      --nmi-active-color: var(--doc-highlight-color);
+
+      aside.notif-message-timestamp .notif-message-time {
+        color: var(--doc-base-color);
       }
 
-      @media screen and (min-width: 800px) {
-        & {
-          --notif-item-width: 60%;
-        }
-      }
-
-      @media screen and (min-width: 1100px) {
-        & {
-          --notif-item-width: var(--main-max-width);
-        }
+      h5.notif-message-title {
+        color: var(--doc-text-color);
       }
     }
 
-    // Notification Message Item (notif. message) styling
-    main.notif-message-list section.notif-message-item {
-      // Set current, "active" interaction color
-      --notif-active-color: var(--base-color);
+    @media screen and (min-width: 1000px) {
 
-      --notif-time-min-width: 9rem;
+      // Adjust visual-aid time line
+      &::after {
+        top: calc(var(--nmi-icon-size) + var(--nmi-icon-spacing));
+        left: calc(var(--nmi-time-min-width) + calc(var(--nmi-icon-size) + var(--nmi-icon-spacing)) / 2.0);
+      }
 
-      // Set message icon sizing
-      --notif-icon-size: 3.8rem; // icon size (including container)
-      --notif-icon-offset: 2.1rem; // icon vertical offset
-      --notif-icon-spacing: 1.8rem; // icon horizontal offset from content
-      --notif-icon-padding: 1.2rem; // icon horiz. padding from time on desktop
-      --notif-icon-container-size: calc(var(--notif-icon-size) + var(--notif-icon-spacing));
-      --notif-icon-text-size: calc(var(--notif-icon-size) - 2rem);
-      --notif-icon-border-size: 0.5rem;
+      // Switch to desktop view
+      & {
+        grid-template-rows: initial;
+        grid-template-columns: auto var(--nmi-icon-container-size) auto;
+        --nmi-icon-container-size: calc(var(--nmi-icon-size) + var(--nmi-icon-spacing) + var(--nmi-icon-padding));
+      }
 
-      // Assign active state
-      &.active,
+      // Assign hover state (desktop-only)
       &:hover {
-        --notif-active-color: var(--highlight-color);
+        --nmi-active-color: var(--doc-highlight-color);
 
         aside.notif-message-timestamp .notif-message-time {
-          color: var(--base-color);
+          color: var(--doc-base-color);
         }
 
         h5.notif-message-title {
-          color: var(--text-color);
+          color: var(--doc-text-color);
         }
       }
+    }
 
-      // Set position relative for visual-aid time line
-      position: relative;
+    // Timestamp styling
+    aside.notif-message-timestamp {
+      text-align: right;
+      min-width: var(--nmi-time-min-width);
+      grid-column-start: 2;
 
-      // Grid configuration
-      display: grid;
-      grid-template-rows: auto auto;
-      grid-template-columns: calc(var(--notif-icon-size) + var(--notif-icon-spacing)) auto;
-      row-gap: 0.2rem;
-
-      // Margin spacing
-      margin-bottom: 2.8rem;
-
-      // Draw timeline visual-aid line
-      &::after {
-        content: "";
-        display: block;
-        position: absolute;
-
-        // Push line behind icon
-        z-index: -1;
-
-        width: 0.6rem;
-        height: calc(100% + var(--notif-icon-size) - 1rem);
-
-        // Enable transitions
-        transition: background-color 0.1s ease-out;
-        background-color: var(--accent-color);
-
-        top: calc(11.8rem);
-        left: calc(var(--notif-icon-size) / 2.0 - var(--notif-icon-border-size) / 2.0);
-      }
-
-      // Clear visual-aid time line from last element
-      &:last-child::after {
-        display: none;
-      }
-
-      @media screen and (min-width: 1100px) {
-
-        // Adjust visual-aid time line
-        &::after {
-          top: calc(var(--notif-icon-size) + var(--notif-icon-spacing));
-          left: calc(var(--notif-time-min-width) + calc(var(--notif-icon-size) + var(--notif-icon-spacing)) / 2.0);
-        }
-
-        // Switch to desktop view
+      @media screen and (min-width: 1000px) {
         & {
-          grid-template-rows: initial;
-          grid-template-columns: auto var(--notif-icon-container-size) auto;
-          --notif-icon-container-size: calc(var(--notif-icon-size) + var(--notif-icon-spacing) + var(--notif-icon-padding));
+          grid-column-start: 1;
         }
       }
 
-      // Timestamp styling
-      aside.notif-message-timestamp {
-        text-align: right;
-        min-width: var(--notif-time-min-width);
-        grid-column-start: 2;
-
-        @media screen and (min-width: 1100px) {
-          & {
-            grid-column-start: 1;
-          }
-        }
-
-        // Date styling
-        .notif-message-date {
-          font-size: 1.6rem;
-          color: var(--subtext-color);
-
-          padding-right: 0.2rem;
-        }
-
-        // Time styling
-        .notif-message-time {
-          font-size: 3.4rem;
-          font-weight: bold;
-          transition: color 0.1s ease-out;
-          color: var(--accent-color);
-        }
-      }
-
-      // Message icon styling
-      .notif-message-icon {
-        // Icon alignment
-        margin-top: var(--notif-icon-offset);
-
-        @media screen and (min-width: 1100px) {
-          & {
-            margin-left: var(--notif-icon-padding);
-          }
-        }
-
-        // Icon color
-        color: var(--text-color);
-
-        // Icon sizing
-        font-size: var(--notif-icon-text-size);
-
-        // Icon container
-        transition: background-color 0.1s ease-out;
-        background-color: var(--notif-active-color);
-        border: var(--notif-icon-border-size) solid var(--accent-color);
-        border-radius: 50%;
-
-        // background-color: unset;
-        // color: transparent;
-
-        // Icon alignment
-        display: grid;
-        width: var(--notif-icon-size);
-        height: var(--notif-icon-size);
-
-        svg {
-          justify-self: center;
-          align-self: center;
-        }
-      }
-    }
-
-    // Content styling
-    section.notif-message-item article.notif-message-content {
-      // Content container
-      padding-left: 1.8rem;
-      padding-right: 1.8rem;
-      transition: background-color 0.1s ease-out;
-      background-color: var(--notif-active-color);
-      border-radius: 0.5rem;
-      position: relative;
-
-      // Content chevron (speech bubble)
-      &::before {
-        content: "";
-        position: absolute;
-        display: block;
-
-        left: -0.8rem;
-        top: 3rem;
-
-        width: 0;
-        height: 0;
-
-        border-top: 1rem solid transparent;
-        border-bottom: 1rem solid transparent;
-        transition: border-right 0.1s ease-out;
-        border-right: 1rem solid var(--notif-active-color);
-      }
-
-
-      // Title styling
-      h5.notif-message-title {
-        // Align title text
-        margin-top: 2.4rem;
-        margin-bottom: 2.4rem;
-        padding-bottom: 1.2rem;
-
-        // Set title text style
-        font-size: 2.2rem;
-        font-weight: 720;
-        transition: color 0.1s ease-out;
-        color: var(--accent-color);
-
-        /// Add title border (horizontal rule)
-        border-bottom: 1px solid var(--accent-color);
-      }
-
-      // Text body styling
-      .notif-message-body {
+      // Date styling
+      .notif-message-date {
         font-size: 1.6rem;
+        color: var(--doc-subtext-color);
+
+        padding-right: 0.2rem;
+      }
+
+      // Time styling
+      .notif-message-time {
+        font-size: 3.4rem;
+        font-weight: bold;
+        transition: color 0.1s ease-out;
+        color: var(--doc-accent-color);
       }
     }
+
+    // Message icon styling
+    .notif-message-icon {
+      // Icon alignment
+      margin-top: var(--nmi-icon-offset);
+
+      @media screen and (min-width: 1000px) {
+        & {
+          margin-left: var(--nmi-icon-padding);
+        }
+      }
+
+      // Icon color
+      color: var(--doc-text-color);
+
+      // Icon sizing
+      font-size: var(--nmi-icon-text-size);
+
+      // Icon container
+      transition: background-color 0.1s ease-out;
+      background-color: var(--nmi-active-color);
+      border: var(--nmi-icon-border-size) solid var(--doc-accent-color);
+      border-radius: 50%;
+
+      // background-color: unset;
+      // color: transparent;
+
+      // Icon alignment
+      display: grid;
+      width: var(--nmi-icon-size);
+      height: var(--nmi-icon-size);
+
+      svg {
+        justify-self: center;
+        align-self: center;
+      }
+    }
+  }
+}
+
+// Content styling
+section.notif-message-item article.notif-message-content {
+  // Content container
+  padding-left: 1.8rem;
+  padding-right: 1.8rem;
+  transition: background-color 0.1s ease-out;
+  background-color: var(--nmi-active-color);
+  border-radius: 0.5rem;
+  position: relative;
+
+  // Content chevron (speech bubble)
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+
+    left: -0.8rem;
+    top: 3rem;
+
+    width: 0;
+    height: 0;
+
+    border-top: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
+    transition: border-right 0.1s ease-out;
+    border-right: 1rem solid var(--nmi-active-color);
+  }
+
+
+  // Title styling
+  h5.notif-message-title {
+    // Align title text
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
+    padding-bottom: 1.2rem;
+
+    // Set title text style
+    font-size: 2.2rem;
+    font-weight: 720;
+    transition: color 0.1s ease-out;
+    color: var(--doc-accent-color);
+
+    /// Add title border (horizontal rule)
+    border-bottom: 1px solid var(--doc-accent-color);
+  }
+
+  // Text body styling
+  .notif-message-body {
+    font-size: 1.6rem;
   }
 }
