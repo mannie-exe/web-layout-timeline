@@ -1,9 +1,4 @@
-import { debounce, update } from "lodash"
-
-interface ScrollEventDebugInfo {
-  time_stamp: number
-  source: EventTarget
-}
+import { debounce } from "lodash"
 
 interface Position2D {
   x: number
@@ -20,8 +15,9 @@ interface CurrentViewport {
   width: number
   height: number
 
-  document_width: number
-  document_height: number
+  list_container_top: number
+  list_container_width: number
+  list_container_height: number
 
   max_scroll: Position2D
   scroll_percent: Position2D
@@ -44,61 +40,75 @@ const _STORE: ScrollFeedbackStore = {
     width: 0,
     height: 0,
 
-    document_width: 0,
-    document_height: 0,
+    list_container_top: 0,
+    list_container_width: 0,
+    list_container_height: 0,
 
     max_scroll: { x: 0, y: 0 },
     scroll_percent: { x: 0, y: 0 },
   }
 }
 
-function set_notif_item_active() {
+function set_active_notif_item(store: ScrollFeedbackStore) {
+  const notif_list = document.querySelector("main.notif-message-list") as HTMLElement
+  if (!notif_list) {
+    return
+  }
 
+  const notif_items = notif_list.children as HTMLCollectionOf<HTMLElement>
+  const notif_items_count = notif_items.length
+  if (!notif_items_count) {
+    return
+  }
+
+  let set_active = false
+  for (let item of notif_items) {
+    item.classList.remove("active")
+
+    if (store.scroll.newest_position.y <= item.offsetTop) {
+      if (!set_active) {
+        item.classList.add("active")
+        set_active = true
+      }
+      continue
+    }
+  }
 }
 
-function update_store(event: Event) {
+function handle_scroll_event(store: ScrollFeedbackStore, event: Event) {
 
   if (!event.target) {
     return
   }
 
-  // const debug_info: ScrollEventDebugInfo = {
-  //   time_stamp: event.timeStamp,
-  //   source: event.target,
-  // }
-
   const new_position = { x: scrollX, y: scrollY }
 
-  _STORE.scroll.last_known_position = _STORE.scroll.newest_position
-  _STORE.scroll.newest_position = new_position
+  store.scroll.last_known_position = store.scroll.newest_position
+  store.scroll.newest_position = new_position
 
-  _STORE.scroll.last_direction.x = Math.sign(_STORE.scroll.newest_position.x
-    - _STORE.scroll.last_known_position.x)
-  _STORE.scroll.last_direction.y = Math.sign(_STORE.scroll.newest_position.y
-    - _STORE.scroll.last_known_position.y)
+  store.scroll.last_direction.x = Math.sign(store.scroll.newest_position.x
+    - store.scroll.last_known_position.x)
+  store.scroll.last_direction.y = Math.sign(store.scroll.newest_position.y
+    - store.scroll.last_known_position.y)
 
-  _STORE.view.max_scroll.x = _STORE.view.document_width - _STORE.view.width
-  _STORE.view.max_scroll.y = _STORE.view.document_height - _STORE.view.height
-
-  if (_STORE.view.max_scroll.x) {
-    _STORE.view.scroll_percent.x = _STORE.scroll.newest_position.x
-      / _STORE.view.max_scroll.x
-    _STORE.view.scroll_percent.x = Math.min(
-      +_STORE.view.scroll_percent.x.toFixed(2), 1.0)
+  store.view.scroll_percent.x = 0.0
+  if (store.view.max_scroll.x) {
+    store.view.scroll_percent.x = store.scroll.newest_position.x
+      / store.view.max_scroll.x
+    store.view.scroll_percent.x = Math.min(
+      +store.view.scroll_percent.x.toFixed(2), 1.0)
   }
 
-  if (_STORE.view.max_scroll.y) {
-    _STORE.view.scroll_percent.y = _STORE.scroll.newest_position.y
-      / _STORE.view.max_scroll.y
-    _STORE.view.scroll_percent.y = Math.min(
-      +_STORE.view.scroll_percent.y.toFixed(2), 1.0)
+  store.view.scroll_percent.y = 0.0
+  if (store.view.max_scroll.y) {
+    store.view.scroll_percent.y = store.scroll.newest_position.y
+      / store.view.max_scroll.y
+    store.view.scroll_percent.y = Math.min(
+      +store.view.scroll_percent.y.toFixed(2), 1.0)
   }
-
-  // console.dir(debug_info)
-  // console.dir(_STORE)
 }
 
-function initialize_store(store: ScrollFeedbackStore) {
+function initialize_store(store: ScrollFeedbackStore, container_query: string) {
 
   store.scroll.last_known_position = { x: scrollX, y: scrollY }
   store.scroll.newest_position = store.scroll.last_known_position
@@ -111,17 +121,19 @@ function initialize_store(store: ScrollFeedbackStore) {
   store.view.width = html_elem.clientWidth
   store.view.height = html_elem.clientHeight
 
-  const body_elem = document.querySelector("body")
-  if (!body_elem) {
+  const container = document.querySelector(container_query) as HTMLElement
+  if (!container) {
     return
   }
 
-  store.view.document_width = body_elem.clientWidth
-  store.view.document_height = body_elem.clientHeight
+  store.view.list_container_top = container.offsetTop
+  store.view.list_container_width = container.clientWidth
+  store.view.list_container_height = container.clientHeight
 
-  store.view.max_scroll.x = store.view.document_width - store.view.width
-  store.view.max_scroll.y = store.view.document_height - store.view.height
+  store.view.max_scroll.x = store.view.list_container_width - store.view.width
+  store.view.max_scroll.y = store.view.list_container_height - store.view.height
 
+  store.view.scroll_percent.x = 0.0
   if (store.view.max_scroll.x) {
     store.view.scroll_percent.x = store.scroll.newest_position.x
       / store.view.max_scroll.x
@@ -129,22 +141,22 @@ function initialize_store(store: ScrollFeedbackStore) {
       +store.view.scroll_percent.x.toFixed(2), 1.0)
   }
 
+  store.view.scroll_percent.y = 0.0
   if (store.view.max_scroll.y) {
     store.view.scroll_percent.y = store.scroll.newest_position.y
       / store.view.max_scroll.y
     store.view.scroll_percent.y = Math.min(
       +store.view.scroll_percent.y.toFixed(2), 1.0)
   }
-
-  // console.dir(store)
 }
 
-initialize_store(_STORE)
+initialize_store(_STORE, "main.notif-message-list")
+set_active_notif_item(_STORE)
 
 addEventListener("scroll", debounce((event) => {
 
-  update_store(event)
-  set_notif_item_active()
+  handle_scroll_event(_STORE, event)
+  set_active_notif_item(_STORE)
 }, 130, {
   maxWait: 110,
   leading: false,
@@ -153,10 +165,10 @@ addEventListener("scroll", debounce((event) => {
 
 addEventListener("resize", debounce((event) => {
 
-  initialize_store(_STORE)
+  initialize_store(_STORE, "main.notif-message-list")
 
-  update_store(event)
-  set_notif_item_active()
+  handle_scroll_event(_STORE, event)
+  set_active_notif_item(_STORE)
 }, 130, {
   maxWait: 110,
   leading: false,

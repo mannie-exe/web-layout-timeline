@@ -136,19 +136,6 @@ main.notif-message-list {
         grid-template-columns: auto var(--nmi-icon-container-size) auto;
         --nmi-icon-container-size: calc(var(--nmi-icon-size) + var(--nmi-icon-spacing) + var(--nmi-icon-padding));
       }
-
-      // Assign hover state (desktop-only)
-      &:hover {
-        --nmi-active-color: var(--doc-highlight-color);
-
-        aside.notif-message-timestamp .notif-message-time {
-          color: var(--doc-base-color);
-        }
-
-        h5.notif-message-title {
-          color: var(--doc-text-color);
-        }
-      }
     }
 
     // Timestamp styling
